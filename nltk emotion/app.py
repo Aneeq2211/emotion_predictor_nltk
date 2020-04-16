@@ -48,11 +48,11 @@ def predict():
     if my_prediction == 'anger':
         return render_template('anger.html', prediction=my_prediction)
     if my_prediction == 'disgust':
-        return render_template('disgust.html', prediction=my_prediction)
+        return render_template('anger.html', prediction=my_prediction)
     if my_prediction == 'fear':
         return render_template('fear.html', prediction=my_prediction)
     if my_prediction == 'guilt':
-        return render_template('guilt.html', prediction=my_prediction)
+        return render_template('shame.html', prediction=my_prediction)
     if my_prediction == 'shame':
         return render_template('shame.html', prediction=my_prediction)
 
