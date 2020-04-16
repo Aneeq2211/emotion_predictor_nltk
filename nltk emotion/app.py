@@ -42,9 +42,19 @@ def predict():
         vect = vectorizer.transform(data1)
         my_prediction = mnb.predict(vect)
     if my_prediction=='sadness':
-        return render_template('result.html', prediction=my_prediction)
+        return render_template('sadness.html', prediction=my_prediction)
     if my_prediction=='joy':
         return render_template('joy.html', prediction=my_prediction)
+    if my_prediction == 'anger':
+        return render_template('anger.html', prediction=my_prediction)
+    if my_prediction == 'disgust':
+        return render_template('disgust.html', prediction=my_prediction)
+    if my_prediction == 'fear':
+        return render_template('fear.html', prediction=my_prediction)
+    if my_prediction == 'guilt':
+        return render_template('guilt.html', prediction=my_prediction)
+    if my_prediction == 'shame':
+        return render_template('shame.html', prediction=my_prediction)
 
 
 if __name__ == "__main__":
