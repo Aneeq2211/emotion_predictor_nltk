@@ -1,0 +1,253 @@
+<html>
+    <head>
+        <style>body {
+            font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+            color: #404040;
+            background: #93cedf;
+          }
+          
+          .container {
+            margin: 80px auto;
+            width: 400px;
+            text-align: center;
+          }
+          
+          .container > .dropdown {
+            margin: 0 20px;
+            vertical-align: top;
+          }
+          .container > .texbox {
+            margin: 0 20px;
+            vertical-align: top;
+            box-sizing: border-box;
+          }
+          
+          .dropdown {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            height: 28px;
+            width: 150px;
+            background: #f2f2f2;
+            border: 1px solid;
+            border-color: white #f7f7f7 whitesmoke;
+            border-radius: 3px;
+            background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+            background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+            background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+            background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+          }
+          
+          .dropdown:before, .dropdown:after {
+            content: '';
+            position: absolute;
+            z-index: 2;
+            top: 9px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 4px dashed;
+            border-color: #888888 transparent;
+            pointer-events: none;
+          }
+          
+          .dropdown:before {
+            border-bottom-style: solid;
+            border-top: none;
+          }
+          
+          .dropdown:after {
+            margin-top: 7px;
+            border-top-style: solid;
+            border-bottom: none;
+          }
+          
+          .dropdown-select {
+            position: relative;
+            width: 130%;
+            margin: 0;
+            padding: 6px 8px 6px 10px;
+            height: 28px;
+            line-height: 14px;
+            font-size: 12px;
+            color: #62717a;
+            text-shadow: 0 1px white;
+            background: #f2f2f2; /* Fallback for IE 8 */
+            background: rgba(0, 0, 0, 0) !important; /* "transparent" doesn't work with Opera */
+            border: 0;
+            border-radius: 0;
+            -webkit-appearance: none;
+          }
+          
+          .dropdown-select:focus {
+            z-index: 3;
+            width: 100%;
+            color: #394349;
+            outline: 2px solid #49aff2;
+            outline: 2px solid -webkit-focus-ring-color;
+            outline-offset: -2px;
+          }
+          
+          .dropdown-select > option {
+            margin: 3px;
+            padding: 6px 8px;
+            text-shadow: none;
+            background: #f2f2f2;
+            border-radius: 3px;
+            cursor: pointer;
+          }
+          
+          /* Fix for IE 8 putting the arrows behind the select element. */
+          
+          .lt-ie9 .dropdown {
+            z-index: 1;
+          }
+          
+          .lt-ie9 .dropdown-select {
+            z-index: -1;
+          }
+          
+          .lt-ie9 .dropdown-select:focus {
+            z-index: 3;
+          }
+          
+          /* Dirty fix for Firefox adding padding where it shouldn't. */
+          
+          @-moz-document url-prefix() {
+            .dropdown-select {
+              padding-left: 6px;
+            }
+          }
+          
+          .dropdown-dark {
+            background: #444;
+            border-color: #111111 #0a0a0a black;
+            background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+            background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+            background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
+            background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
+            -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+          }
+          
+          .dropdown-dark:before {
+            border-bottom-color: #aaa;
+          }
+          
+          .dropdown-dark:after {
+            border-top-color: #aaa;
+          }
+          
+          .dropdown-dark .dropdown-select {
+            color: #aaa;
+            text-shadow: 0 1px black;
+            background: #444;  /* Fallback for IE 8 */
+          }
+          
+          .dropdown-dark .dropdown-select:focus {
+            color: #ccc;
+          }
+          
+          .dropdown-dark .dropdown-select > option {
+            background: #444;
+            text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+          }
+          .texbox {
+            margin: 0 20px;
+            vertical-align: top;
+            box-sizing: border-box;
+            border-radius: 30px;
+          }</style>
+      </head>
+      
+      <body>
+        <form action="{{ url_for('predict')}}" method="post">
+      <section class="container">
+    <div class="dropdown">
+        
+      <select name="one"  class="dropdown-select">
+        <option value="">City</option>
+        <option value="0">BAGALKOT</option>
+        <option value="1">BANGALORE</option>
+        <option value="2">BELGAUM</option>
+        <option value="3">BELLARY</option>
+        <option value="4">CHIKKABALLAPUR</option>
+        <option value="5">CHITRADURGA</option>
+        <option value="6">DAVANGERE</option>
+        <option value="7">DHARWAD</option>
+        <option value="8">GULBARGA</option>
+        <option value="9">HASSAN</option>
+        <option value="10">HUBLI</option>
+        <option value="11">HALIYAL</option>
+        <option value="12">KARKALA</option>
+        <option value="13">MANDYA</option>
+        <option value="14">MANGALORE</option>
+        <option value="15">MOODBIDRI</option>
+        <option value="16">MYSORE</option>
+        <option value="17">SHIMOGA</option>
+        <option value="18">TUMKUR</option>
+      </select>
+    </div>
+    <br>
+    <br>
+    
+    <div class="dropdown">
+        
+        <select name="one" class="dropdown-select">
+          <option value="">Category</option>
+          <option value="0">CHRISTIAN</option>
+          <option value="1">GENERAL MERIT</option>
+          <option value="2">HYDERABAD-KARNATAKA-REGION</option>
+          <option value="3">TULU</option>
+        </select>
+      </div>
+      <br>
+      <br>
+      
+    <div class="dropdown">
+      <select name="two" class="dropdown-select">
+        <option value="">Branch</option>
+        <option value="0">AER</option>
+        <option value="1">ARO</option>
+        <option value="2">ASE</option>
+        <option value="3">AUE</option>
+        <option value="4">BIO</option>
+        <option value="5">BME</option>
+        <option value="6">CHE</option>
+        <option value="7">CSE</option>
+        <option value="8">CSSC</option>
+        <option value="9">CTM</option>
+        <option value="10">CVL</option>
+        <option value="11">ECE</option>
+        <option value="12">ECSC</option>
+        <option value="13">EEE</option>
+        <option value="14">EIE</option>
+        <option value="15">IEM</option>
+        <option value="16">INS</option>
+        <option value="17">ITE</option>
+        <option value="18">MCH</option>
+        <option value="19">MEE</option>
+        <option value="20">MTE</option>
+        <option value="21">NAN</option>
+        <option value="22">TEL</option>
+        <option value="23">TEX</option>
+      
+      </select></div>
+      <br>
+      <br>
+      <div>
+      <input type="text" name ="RANK"><br>
+        <br> <center> <input type="submit" value="Go"></center>
+    </div>
+    <br>
+    <br>
+  </section>
+</form>
+<div align="center">
+<br>
+{{prediction_text}}
+<br>
+</body>
+  </html>

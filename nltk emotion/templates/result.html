@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Student form</title>
+<style type="text/css">
+body {
+margin: 0;
+background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),url('http://www.gat.ac.in/wp-content/uploads/2016/11/3-2.jpg'
+);
+background-size:cover;
+}
+p {
+font-family: cursive;
+color:black;
+text-align: center;
+padding: 10px;
+font-weight:bold;
+font-size:25px;
+}
+h1 {
+font-family: cursive;
+background-color: #000;
+color:white;
+text-align: center;
+padding: 20px;
+}
+div {
+width: 400px;
+margin: 10px auto;
+}
+a {
+padding: 30px;
+margin: 30px;
+border-radius: 10px;
+background-color: black;
+text-decoration: none;
+display: inline-block;
+color: #fff;
+font-family: cursive;
+}
+a:hover {
+background-color: #cccccc;
+transition: all 0.3s
+}
+input[type=Submit]{
+background-color:black ;
+border: none;
+color: white;
+padding: 16px 32px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+font-family: cursive;
+}
+</style>
+</head>
+<body>
+<form action="{{ url_for('predict')}}" method="post">
+<h1>EMOTION PREDICTOR</h1>
+
+</form></br></br>
+<table align="center" border=2>
+<th>
+You are feeling :
+</th>
+<td>
+<div align="center">   {{ prediction }} </br></div>
+</td>
+</table>
+<p>All the best</p>
+</div>
+</body>
+</html>
+
