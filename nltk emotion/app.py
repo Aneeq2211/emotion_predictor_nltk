@@ -41,9 +41,9 @@ def predict():
         data1 = [emotion]
         vect = vectorizer.transform(data1)
         my_prediction = mnb.predict(vect)
-    if my_prediction=='sadness':
+    if my_prediction == 'sadness':
         return render_template('sadness.html', prediction=my_prediction)
-    if my_prediction=='joy':
+    if my_prediction == 'joy':
         return render_template('joy.html', prediction=my_prediction)
     if my_prediction == 'anger':
         return render_template('anger.html', prediction=my_prediction)
