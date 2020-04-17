@@ -1,25 +1,19 @@
-import numpy as np
-from flask import Flask, request, jsonify, render_template
+import numpy as np                                          #importing neccessary lib
+from flask import Flask, request, jsonify, render_template  #used flask for server
 import pickle
 from sklearn.externals import joblib
-
 app = Flask(__name__)
-
-
-
-@app.route('/')
+@app.route('/')     #redirects to the main page when app is started
 def home():
     return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST'])     #this function predicts the emotion based on input
 def predict():
     import pandas as pd
     from sklearn.feature_extraction.text import CountVectorizer
     from sklearn.naive_bayes import MultinomialNB
-
-    data = pd.read_csv("ISEAR2.csv")
-
-    def simple_split(data, y, length, split_mark=0.95):
+    data = pd.read_csv("ISEAR2.csv")            #training dataset is loaded
+    def simple_split(data, y, length, split_mark=0.95): #95% data is used to train the model
         if split_mark > 0. and split_mark < 1.0:
             n = int(split_mark * length)
         else:
@@ -40,8 +34,8 @@ def predict():
         emotion = request.form['emotion']
         data1 = [emotion]
         vect = vectorizer.transform(data1)
-        my_prediction = mnb.predict(vect)
-    if my_prediction == 'sadness':
+        my_prediction = mnb.predict(vect)       #here the predicted emotion is stored
+    if my_prediction == 'sadness':              #these if statements redirect user to web pages according to their predicted emotions.
         return render_template('sadness.html', prediction=my_prediction)
     if my_prediction == 'joy':
         return render_template('joy.html', prediction=my_prediction)
