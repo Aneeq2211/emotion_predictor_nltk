@@ -14,6 +14,13 @@ color:white;
 text-align: center;
 padding: 20px;
 }
+h3 {
+font-family: cursive;
+background-color: #000;
+color:white;
+text-align: center;
+padding: 20px;
+}
 div {
 width: 400px;
 margin: 10px auto;
@@ -52,7 +59,8 @@ font-family: cursive;
 </head>
 <body>
 <form action="{{ url_for('predict')}}" method="post">
-<h1>EMOTION PREDICTOR</h1>
+<h1>EMOTION PREDICTOR & THERAPIST</h1>
+<h3>This app helps you with your feelings, you can express yourself and it helps you to be yourself.</h3>
 <div align="center">
 <a>Tell us what's going on your mind?<input type="text" name ="emotion"></a></br>
 <input type="Submit" value="Go">
